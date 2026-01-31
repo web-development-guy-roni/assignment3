@@ -1,18 +1,21 @@
+import Square from './Square';
+
 interface BoardProps {
     squares: (string | null)[];
     onClick: (i: number) => void;
+    winningLine: number[] | null;
 }
 
-const Board = ({ squares, onClick }: BoardProps) => {
+const Board = ({ squares, onClick, winningLine }: BoardProps) => {
     const renderSquare = (i: number) => {
+        const isWinningSquare = winningLine?.includes(i) ?? false;
         return (
-            <button
+            <Square 
                 key={i}
-                className="square"
-                onClick={() => onClick(i)}
-            >
-                {squares[i]}
-            </button>
+                value={squares[i]} 
+                onClick={() => onClick(i)} 
+                isWinningSquare={isWinningSquare}
+            />
         );
     };
 

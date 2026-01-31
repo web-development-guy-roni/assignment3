@@ -8,6 +8,7 @@ function App() {
 
   const winInfo = calculateWinner(squares)
   const winner = winInfo?.winner
+  const winningLine = winInfo?.line || null
   
   const isDraw = !winner && squares.every(square => square !== null)
 
@@ -42,6 +43,7 @@ function App() {
       <Board 
         squares={squares} 
         onClick={handleClick} 
+        winningLine={winningLine}
       />
       <button 
         className="btn btn-outline-primary mt-4" 
