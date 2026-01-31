@@ -1,3 +1,5 @@
+// Guy-Rozenbaum-214424814-Roni-Taktook-213207640
+
 import Square from './Square';
 
 interface BoardProps {
@@ -10,10 +12,10 @@ const Board = ({ squares, onClick, winningLine }: BoardProps) => {
     const renderSquare = (i: number) => {
         const isWinningSquare = winningLine?.includes(i) ?? false;
         return (
-            <Square 
+            <Square
                 key={i}
-                value={squares[i]} 
-                onClick={() => onClick(i)} 
+                value={squares[i]}
+                onClick={() => onClick(i)}
                 isWinningSquare={isWinningSquare}
             />
         );
