@@ -1,3 +1,5 @@
+// Guy-Rozenbaum-214424814-Roni-Taktook-213207640
+
 import { useState } from 'react'
 import Board from './Board'
 import { calculateWinner } from './utils'
@@ -8,7 +10,8 @@ function App() {
 
   const winInfo = calculateWinner(squares)
   const winner = winInfo?.winner
-  
+  const winningLine = winInfo?.line || null
+
   const isDraw = !winner && squares.every(square => square !== null)
 
   const handleClick = (i: number) => {
@@ -39,12 +42,13 @@ function App() {
     <div className="container mt-5 d-flex flex-column align-items-center">
       <h1 className="mb-4">Tic Tac Toe</h1>
       <div className="mb-3 fs-3 fw-bold">{status}</div>
-      <Board 
-        squares={squares} 
-        onClick={handleClick} 
+      <Board
+        squares={squares}
+        onClick={handleClick}
+        winningLine={winningLine}
       />
-      <button 
-        className="btn btn-outline-primary mt-4" 
+      <button
+        className="btn btn-outline-primary mt-4"
         onClick={handleRestart}
       >
         Restart Game
